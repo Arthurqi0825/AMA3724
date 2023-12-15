@@ -53,3 +53,24 @@ print(f"x is {x}")
 print(f"residuals is {residuals}")
 # print(rank)
 # print(singular_values)
+
+A_sym = sp.Matrix(A)
+b_sym = sp.Matrix(b)
+
+# Define the symbol for the unknown vector x
+x = sp.symbols('x0:{}'.format(A.shape[1]))
+
+# Define the normal equations Ax = b
+equations = [sp.Eq(A_sym * sp.Matrix(x), b_sym)]
+
+# Solve the normal equations symbolically
+solution = sp.solve(equations, x)
+
+# Calculate the error
+error = sp.N((A_sym * sp.Matrix(list(solution.values()))) - b_sym).norm()
+
+# Print the solution and error
+for i, sol in enumerate(solution):
+    print('x{} = {}'.format(i, sol))
+
+print('Error: {}'.format(error))
