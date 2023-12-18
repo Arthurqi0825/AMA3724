@@ -26,7 +26,7 @@ print(D)
 print()
 A = sp.Matrix([[3,-2,4],[-2,6,2],[4,2,3]])
 #  Attention: A should be symmetric matrix to use QDQ^T to decomposite
-
+print("eigenvets",A.eigenvects())
 P, D = A.diagonalize()
 Q,R = P.QRdecomposition()
 print(Q@D@Q.transpose())
@@ -39,7 +39,7 @@ U, S, V = A.singular_value_decomposition()
 print(A.singular_value_decomposition())
 
 print(U@S@V.transpose())
-print(pos_def_check(A))
+# print(pos_def_check(A))
 
 A = sp.Matrix([[1,1,1,-1],[0,1,1,0],[-1,1,1,1]])
 U, S, V = A.singular_value_decomposition()
