@@ -1,28 +1,28 @@
 import sympy as sp 
 
-# print("Q1")
-# A = sp.Matrix([[2,3,0],[1,4,0],[0,0,5]])
+print("Q1")
+A = sp.Matrix([[2,3,0],[1,4,0],[0,0,5]])
 
-# print(A.eigenvects())
-# print(A.det())
+print(A.eigenvects())
+print(A.det())
+d = A.det()
+print("Q2")
+A = sp.Matrix([[1,4,-2,6],[0,4,6,2],[0,0,0,6],[0,0,0,2]]);
+print(A.diagonalize());
+print(A.eigenvects())
+print("Q3")
 
-# print("Q2")
-# A = sp.Matrix([[1,4,-2,6],[0,4,6,2],[0,0,0,6],[0,0,0,2]]);
-# print(A.diagonalize());
-# print(A.eigenvects())
-# print("Q3")
+A = sp.Matrix([[2,3],[1,4]])
 
-# A = sp.Matrix([[2,3],[1,4]])
+P,D = A.diagonalize()
+print(P)
+print(D)
 
-# P,D = A.diagonalize()
-# print(P)
-# print(D)
-
-# print("Q4")
-# A = sp.Matrix([[3,-2],[4,-1]])
-# P,D = A.diagonalize()
-# print(P)
-# print(D)
+print("Q4")
+A = sp.Matrix([[3,-2],[4,-1]])
+P,D = A.diagonalize()
+print(P)
+print(D)
 print("Q5")
 A = sp.Matrix([[5,2],[-2,1]])
 
