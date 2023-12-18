@@ -1,14 +1,19 @@
 import sympy as sp 
 
-A = sp.Matrix([[4,-1,6],[2,1,-6],[2,-1,8]])
-print(A.eigenvals())
+A = sp.Matrix([[4,-1,6],[2,1,6],[2,-1,8]])
+print(A.eigenvects())
 
 A = sp.Matrix([[1,0,1],[-1,2,1],[0,0,2]])
-print("\n")
-B = sp.Matrix([[1,1,0],[0,1,0],[1,0,1]]).T
-print((B.inv())@A@(B))
+
+P,D = A.diagonalize()
+print(A.eigenvals())
+print("P",P)
+print("D",D)
 
 
-A = sp.Matrix([[2,4,3],[-4,-6,-3],[3,3,1]])
+A = sp.Matrix([[2,3,2],[1,8,2],[-2,-14,-3]])
 # print(A)
-print(A.eigenvects())
+# print(A.eigenvects())
+S, J = A.jordan_form()
+print(S)
+print(J)

@@ -8,7 +8,7 @@ v=sp.Matrix([1,5,-7]).T
 x1,x2 = sp.symbols("x1 x2 ")
 
 print(sp.linsolve((A,v),x1,x2))
-
+# Q2
 A = sp.Matrix([[2,1,0],[2,2,0],[0,0,1]])
 
 B = sp.eye(3)
@@ -26,6 +26,7 @@ print(pow(C,5))
 # print(A.rref())
 
 # Q4
+print("Q4")
 A  = sp.Matrix([[0,-3,-2],[-5,9,1]])
 
 u = sp.Matrix([5,3,-2])

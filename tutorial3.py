@@ -6,19 +6,20 @@ import numpy as np
  
 # Q1   
 print("Othogonal Set u1 u2 and u3")
-A = sp.Matrix([[3,1,1],[-1,2,1],[-0.5,-2,3.5]])
+A = sp.Matrix([[3,1,1],[-1,2,1],[-0.5,-2,3.5]]).T
 
-u1 = A[0, :]
-u2 = A[1, :]
-u3 = A[2, :]
+u1 = A[:, 0]
+u2 = A[:, 1]
+u3 = A[:, 2]
 print(u1.dot(u2))
 print(u1.dot(u3))
 print(u2.dot(u3))
 
-A = np.array([[3,1,1],[-1,2,1],[-0.5,-2,3.5]]).T
-b = np.array([6,1,-8]).T
-
-print(np.linalg.solve(A,b))
+# A = np.array([[3,1,1],[-1,2,1],[-0.5,-2,3.5]]).T
+b = sp.Matrix([6,1,-8]).T
+x1,x2,x3 = sp.symbols('x1 x2 x3')
+print(sp.linsolve((A,b),x1,x2,x3))
+# print(np.linalg.solve(A,b))
 
 
 # Q2
@@ -31,9 +32,9 @@ p = (y.dot(u))/(u.dot(u))*u
 print(p)
 
 # Q3
-A = np.array([[1,0,0], [1,1,0], [1,1,1], [1,1,1]])
+A = sp.Matrix([[1,0,0], [1,1,0], [1,1,1], [1,1,1]])
 
-Q, R = np.linalg.qr(A)
+Q, R = A.QRdecomposition()
 
 print(f"Q is:\n{Q}\nR is:\n{R}")
 
@@ -54,23 +55,10 @@ print(f"residuals is {residuals}")
 # print(rank)
 # print(singular_values)
 
-A_sym = sp.Matrix(A)
-b_sym = sp.Matrix(b)
+A = sp.Matrix([[3,2,-1],[1,-4,3],[1,10,-7]])
+b = sp.Matrix([2,-2,1])
+ata = A.transpose()@A
+atb = A.transpose()@b
 
-# Define the symbol for the unknown vector x
-x = sp.symbols('x0:{}'.format(A.shape[1]))
-
-# Define the normal equations Ax = b
-equations = [sp.Eq(A_sym * sp.Matrix(x), b_sym)]
-
-# Solve the normal equations symbolically
-solution = sp.solve(equations, x)
-
-# Calculate the error
-error = sp.N((A_sym * sp.Matrix(list(solution.values()))) - b_sym).norm()
-
-# Print the solution and error
-for i, sol in enumerate(solution):
-    print('x{} = {}'.format(i, sol))
-
-print('Error: {}'.format(error))
+AB = sp.Matrix([[ata,atb]])
+print(AB.rref())
