@@ -26,7 +26,7 @@ import sympy as sp
 # print(sp.linsolve((A,b2),x1,x2,x3,x4,x5))
 # print(sp.linsolve((A,b1),x1,x2,x3,x4,x5))
 
-# if we ahve v1,v2,... and check whether any one of them can be writen as combination of others =:
+# if we have v1,v2,... and check whether any one of them can be writen as combination of others =:
 
 A = sp.Matrix([[1,-2,-5,3,1],[2,5,6,-1,2],[3,-4,5,-2,3],[4,8,-8,9,4],[4,8,-8,10,4]]).T; 
 print(f"A is \n{A}")
